@@ -19,13 +19,13 @@ import { trigger, transition, query, style, stagger, keyframes, animate } from '
           ]))
         ]), {optional: true}),
 
-        // query(':leave', stagger('300ms', [
-        //   animate('.6s ease-in', keyframes([
-        //     style({opacity: 1, transform: 'translateY(0)', offset: 0}),
-        //     style({opacity: .5, transform: 'translateY(35px)', offset: .3}),
-        //     style({opacity: 0, transform: 'translateY(-75%)', offset: 1}),
-        //   ]))
-        // ]), {optional: true})
+        query(':leave', stagger('300ms', [
+          animate('.6s ease-in', keyframes([
+            style({opacity: 1, transform: 'translateY(0)', offset: 0}),
+            style({opacity: .5, transform: 'translateY(35px)', offset: .3}),
+            style({opacity: 0, transform: 'translateY(-75%)', offset: 1}),
+          ]))
+        ]), {optional: true})
       ])
     ])
   ]
@@ -43,10 +43,22 @@ export class StickyComponent implements OnInit {
 
   deleteMe(type: string, key: number): void {
     switch(type){
-      case 'good':  break;
-      case 'bad':  break;
-      case 'happiness':  break;
+      case 'good': this.deleteFrom(this.igood, key);  break;
+      case 'bad':  this.deleteFrom(this.ibad, key); break;
+      case 'happiness':  this.deleteFrom(this.ihappiness, key); break;
     }
   }
 
+
+  deleteFrom(group: Array<Retro>, key: number){
+    let index = 0, count = 0;
+    group.forEach(element => {
+      if(element.key === key){
+        index = count;
+      }
+      count++;
+    });
+    group.splice(index, 1);
+  }
+  
 }
