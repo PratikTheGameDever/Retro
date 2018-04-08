@@ -1,22 +1,26 @@
 <div class="row">
   <div class="col-lg-4 col-md-4" [@stickies]='igood.length'>
       <div *ngFor="let content of igood" class="rotate-1 lazur-bg">
-        <a href="#" class="text-danger pull-right"><i class="fa fa-trash-o "
-          (click)="deleteMe('good',content.key)"></i></a>
+        <span class="text-danger pull-right">
+          <i class="fa fa-trash-o " (click)="deleteMe('good',content.key)">X</i>
+        </span>
         <p> {{content.content}}</p>
       </div>
   </div>
     <div class="col-lg-4 col-md-4" [@stickies]='ibad.length'>
       <div *ngFor="let content of ibad" class="rotate-1 red-bg">
-        <a href="#" class="text-danger pull-right"><i class="fa fa-trash-o "
-          (click)="deleteMe('bad',content.key)"></i></a>
+        <span class="text-danger pull-right">
+          <i class="fa fa-trash-o " (click)="deleteMe('bad',content.key)">X</i>
+        </span>
         <p> {{content.content}}</p>
       </div>
     </div>
     <div class="col-lg-4 col-md-4" [@stickies]='ihappiness.length'>
       <div *ngFor="let content of ihappiness" class="rotate-1 yellow-bg"
       (click)="deleteMe('happiness',content.key)">
-        <a href="#" class="text-danger pull-right"><i class="fa fa-trash-o "></i></a>
+        <span class="text-danger pull-right">
+          <i class="fa fa-trash-o " (click)="deleteMe('happiness',content.key)">X</i>
+        </span>
         <p> {{content.content}}</p>
         
       </div>
