@@ -31,7 +31,7 @@ export class RetroInputComponent implements OnInit {
     switch(type){
       case 'good': 
         this.good.push(new Retro(this.key++, this.goodContent)); 
-        this._service.sendData('type='+type+'&content='+this.goodContent)
+        this._service.sendData('type='+type+'&content='+this.goodContent+'&key='+this.key)
         .subscribe(
           data => console.log('success: ', data),
           err => console.log('error: ', err)
@@ -39,7 +39,7 @@ export class RetroInputComponent implements OnInit {
         break;
       case 'bad': 
         this.bad.push(new Retro(this.key++, this.badContent)); 
-        this._service.sendData('type='+type+'&content='+this.badContent)
+        this._service.sendData('type='+type+'&content='+this.badContent+'&key='+this.key)
         .subscribe(
           data => console.log('success: ', data),
           err => console.log('error: ', err)
@@ -47,7 +47,7 @@ export class RetroInputComponent implements OnInit {
         break;
       case 'happiness': 
         this.happiness.push(new Retro(this.key++, this.happyContent)); 
-        this._service.sendData('type='+type+'&content='+this.happyContent)
+        this._service.sendData('type='+type+'&content='+this.happyContent+'&key='+this.key)
         .subscribe(
           data => console.log('success: ', data),
           err => console.log('error: ', err)

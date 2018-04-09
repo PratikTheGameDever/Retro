@@ -13,12 +13,16 @@ export class RetroService{
     }
 
     sendData(data: String): Observable<any> {
-        return this._http.get('https://rentoserver.firebaseapp.com/add?'+data)
+        return this._http.get('http://localhost:5000/rentoserver/us-central1/app/add?'+data)
         .map(data => data).catch(error => error);
     }
 
     getData(): Observable<any> {
-        return this._http.get('https://rentoserver.firebaseapp.com/getAll')
+        return this._http.get('http://localhost:5000/rentoserver/us-central1/app/getAll')
             .map(data => data).catch(error => error);
+    }
+    deleteData(data: String): Observable<any> {
+        return this._http.get('http://localhost:5000/rentoserver/us-central1/app/delete?'+data)
+        .map(data => data).catch(error => error);
     }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Retro } from '../models/retro.model';
 import { trigger, transition, query, style, stagger, keyframes, animate } from '@angular/animations';
+import { RetroService } from '../services/retro.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'retro-sticky',
@@ -36,16 +38,28 @@ export class StickyComponent implements OnInit {
   @Input() ibad: Array<Retro> = [];
   @Input() ihappiness: Array<Retro> = [];
 
-  constructor() { }
+  constructor(private _service: RetroService, 
+    private _router: Router){
+
+  }
 
   ngOnInit() {
   }
 
   deleteMe(type: string, key: number): void {
     switch(type){
-      case 'good': this.deleteFrom(this.igood, key);  break;
-      case 'bad':  this.deleteFrom(this.ibad, key); break;
-      case 'happiness':  this.deleteFrom(this.ihappiness, key); break;
+      case 'good': 
+        this.deleteFrom(this.igood, key);  
+        this._service.deleteData('type='+type+'&key='+key).subscribe(_=>_);
+        break;
+      case 'bad':  
+        this.deleteFrom(this.ibad, key);
+        this._service.deleteData('type='+type+'&key='+key).subscribe(_=>_);
+        break;
+      case 'happiness':  
+        this.deleteFrom(this.ihappiness, key);
+        this._service.deleteData('type='+type+'&key='+key).subscribe(_=>_);
+        break;
     }
   }
 
