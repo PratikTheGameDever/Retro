@@ -21,4 +21,8 @@ export class RetroService{
         return this._http.get('https://rentoserver.firebaseapp.com/getAll')
             .map(data => data).catch(error => error);
     }
+    deleteData(data: String): Observable<any> {
+        return this._http.get('https://rentoserver.firebaseapp.com/delete?'+data)
+        .map(data => data).catch(error => error);
+    }
 }
