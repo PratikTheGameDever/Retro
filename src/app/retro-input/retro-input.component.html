@@ -1,17 +1,17 @@
 <div class="row">
   <div class="col-lg-4 col-md-4">
     <h2>What Went Good</h2>
-    <textarea style="width: 80%;" name="good-content" [(ngModel)]='goodContent'></textarea>
+    <input type="text" style="width: 80%;" name="good-content" [(ngModel)]='goodContent'>
     <button (click)='addContent("good")'>Add</button>
   </div>
   <div class="col-lg-4 col-md-4">
     <h2>What Went Bad</h2>
-    <textarea style="width: 80%;" name="bad-content" [(ngModel)]='badContent' ></textarea>
+    <input type="text" style="width: 80%;" name="bad-content" [(ngModel)]='badContent' >
     <button (click)='addContent("bad")'>Add</button>
   </div>
   <div class="col-lg-4 col-md-4">
     <h2>Happiness Score</h2>
-    <textarea style="width: 80%;" name="happy-content" [(ngModel)]='happyContent'></textarea>
+    <input type="text" style="width: 80%;" name="happy-content" [(ngModel)]='happyContent'>
     <button (click)='addContent("happiness")'>Add</button>
   </div>
 </div>

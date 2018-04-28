@@ -37,6 +37,8 @@ export class StickyComponent implements OnInit {
   @Input() igood: Array<Retro> = [];
   @Input() ibad: Array<Retro> = [];
   @Input() ihappiness: Array<Retro> = [];
+  
+  queryParam : string;
 
   constructor(private _service: RetroService, 
     private _router: Router){
@@ -47,20 +49,24 @@ export class StickyComponent implements OnInit {
   }
 
   deleteMe(type: string, key: number): void {
+    this.queryParam = 'type='+type+'&key='+key; 
     switch(type){
       case 'good': 
-        this.deleteFrom(this.igood, key);  
-        this._service.deleteData('type='+type+'&key='+key).subscribe(_=>_);
+        this.deleteFrom(this.igood, key); 
         break;
       case 'bad':  
         this.deleteFrom(this.ibad, key);
-        this._service.deleteData('type='+type+'&key='+key).subscribe(_=>_);
         break;
       case 'happiness':  
         this.deleteFrom(this.ihappiness, key);
-        this._service.deleteData('type='+type+'&key='+key).subscribe(_=>_);
         break;
+      default :
+        console.error("Handle Some error");  
     }
+    this._service.deleteData(this.queryParam).subscribe(
+      data => console.log('success'),
+      err =>  console.log('Error ', err)
+     );
   }
 
 
