@@ -22,12 +22,12 @@ export class AllStickiesComponent implements OnInit {
   ngOnInit() {
     this._service.getData().subscribe(
       data => {
-        this.allContent = data.json();
+        const allContent = data.json();
         this.good = [];
         this.bad = [];
         this.happiness = [];
         this.key = 0;
-        for(let data of this.allContent){
+        for(let data of allContent){
           switch(data.type){
             case 'good': this.good.push(new Retro(this.key++, data.content)); break;
             case 'bad': this.bad.push(new Retro(this.key++, data.content)); break;

@@ -9,6 +9,10 @@ import { AllStickiesComponent } from './all-stickies/all-stickies.component';
 import { RouterModule } from '@angular/router';
 import { RetroInputComponent } from './retro-input/retro-input.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule }     from './app-routing.module';
+import { AlwaysAuthGuard } from './authentication/alwaysauthguard';
+import { OnlyLoggedInUsersGuard } from './authentication/onlyloggedInusersguard';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -21,17 +25,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(
-      [
-        {path: '', redirectTo: 'home', pathMatch: 'full'},
-        {path: 'home', component: RetroInputComponent, pathMatch: 'full'},
-        {path: 'all', component: AllStickiesComponent, pathMatch: 'full'},
-        {path: '**', redirectTo: 'home'}
-      ]
-    ),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AppRoutingModule
   ],
-  providers: [RetroService],
+  providers: [
+    RetroService,
+    UserService,
+    AlwaysAuthGuard,
+    OnlyLoggedInUsersGuard],
+    
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+  }
+ 
+ }
