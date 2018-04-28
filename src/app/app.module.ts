@@ -13,13 +13,17 @@ import { AppRoutingModule }     from './app-routing.module';
 import { AlwaysAuthGuard } from './authentication/alwaysauthguard';
 import { OnlyLoggedInUsersGuard } from './authentication/onlyloggedInusersguard';
 import { UserService } from './services/user.service';
+import { TeamListComponent } from './team-list/team-list.component';
+import { TeamSetupComponent } from './team-setup/team-setup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StickyComponent,
     AllStickiesComponent,
-    RetroInputComponent
+    RetroInputComponent,
+    TeamListComponent,
+    TeamSetupComponent
   ],
   imports: [
     BrowserModule,

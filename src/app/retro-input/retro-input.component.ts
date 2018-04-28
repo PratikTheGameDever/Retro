@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Retro } from '../models/retro.model';
 import { RetroService } from '../services/retro.service';
 import { Router } from '@angular/router';
+import { Team } from '../models/team.model';
 
 @Component({
   selector: 'retro-retro-input',
@@ -23,9 +24,16 @@ export class RetroInputComponent implements OnInit {
   key: number = 0;
   err : any;
   queryParam : string;
+  teams: Array<Team> = [];
 
   constructor(private _service: RetroService, 
     private _router: Router){
+      this._service.getTeams().subscribe(
+        data => {
+          this.teams = data.json();
+        },
+        error => console.log(error)
+      );
   }
 
   addContent(type: string){

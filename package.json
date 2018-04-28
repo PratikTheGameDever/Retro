@@ -9,9 +9,16 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng build && firebase deploy"
+    "server": "node server.js",
+    "start-dev": "concurrently \"npm run server\" \"ng serve --open\"",
+    "predeploy": "ng build --env=prod",
+    "deploy": "firebase deploy"
   },
   "private": true,
+  "engines": {
+    "node": "8.X.X",
+    "npm": "5.8.X"
+  },
   "dependencies": {
     "@angular/animations": "^4.2.4",
     "@angular/common": "^4.2.4",
@@ -24,7 +31,8 @@
     "@angular/router": "^4.2.4",
     "core-js": "^2.4.1",
     "rxjs": "^5.4.2",
-    "zone.js": "^0.8.14"
+    "zone.js": "^0.8.14",
+    "express": "^4.16.2"
   },
   "devDependencies": {
     "@angular/cli": "^1.7.3",
@@ -45,7 +53,8 @@
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
     "tslint": "~5.3.2",
-    "typescript": "~2.3.3"
+    "typescript": "~2.3.3",
+    "concurrently": "^3.4.0"
   },
   "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.0.",
   "main": "karma.conf.js",

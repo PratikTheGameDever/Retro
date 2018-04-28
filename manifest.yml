@@ -1,0 +1,7 @@
+applications:
+- name: RetroTool
+buildpack: nodejs_buildpack
+health-check-type: none
+command: node server.js
+env:
+  NODE_ENV: production

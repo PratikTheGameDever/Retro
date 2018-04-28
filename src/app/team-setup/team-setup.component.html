@@ -1,0 +1,16 @@
+<form #teamForm="ngForm">
+  <div class="row">
+    <div class="input-group col-6">
+      <div class="input-group-prepend">
+        <span class="input-group-text">What's Your Team Name?</span>
+      </div>
+      <input #team type="text" class="form-control" [(ngModel)]="teamName" name="teamName" 
+      (blur)="setTeamName(team.value)" required />
+    </div>
+    <div *ngIf="teamForm.form.invalid && teamForm.controls.teamName.dirty" 
+    class="col-6"
+    style="color: brown; margin-top: 12px;">
+      &emsp; Hey, Teay Name is Requried.
+    </div>
+  </div>
+</form>
