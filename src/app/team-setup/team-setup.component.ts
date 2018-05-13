@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class TeamSetupComponent implements OnInit {
 
   teams: Array<Team> = [];
+  teamName: string = '';
 
   constructor(private _service: RetroService, private _router: Router) { }
 
