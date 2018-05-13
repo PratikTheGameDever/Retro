@@ -20,7 +20,7 @@ export class RetroService{
     }
     
     sendData(data: String): Observable<any> {
-        return this._http.get(BASE_URL + '/add' + data + '&team=' + this.teamName)
+        return this._http.get(BASE_URL + '/add?' + data + '&team=' + this.teamName)
         .map(data => data).catch(error => error); //we can remove
     }
 
@@ -29,8 +29,9 @@ export class RetroService{
             .map(data => data).catch(error => error);
     }
 
-    setTeamName(val: string) {
-        this._http.get(BASE_URL + '/addNewTeam?name=' + val);
+    setTeamName(val: string): Observable<any> {
+        this.teamName = val;
+        return this._http.get(BASE_URL + '/addNewTeam?name=' + val);
     }
 
     deleteData(data: String): Observable<any> {

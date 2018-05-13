@@ -1,8 +1,15 @@
 <div class="row">
   <div class="input-group col-12">
-    <button *ngFor="let team of teams" class="btn btn-primary" type="button">
-      {{team.name}}
-      <span class="badge badge-light">7</span>
-    </button>
+    <span style='margin-top: 6px;'> choose a different team : </span>
+    <span *ngFor='let team of teams'>
+      &emsp;
+      <button (click)='setTeam(team)' class="btn btn-primary" type="button">
+        {{team}}
+        <!--<span class="badge badge-light">7</span>-->
+      </button>
+    </span>
+    <span style='margin-top: 6px;' *ngIf="teams.length === 0">
+      &nbsp;<b>no team available</b>
+    </span>
   </div>
 </div>

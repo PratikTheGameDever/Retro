@@ -31,6 +31,8 @@ app.get('/add', (req, res) => {
         case "bad" : data[req.query.team].push({type: 'bad', content: req.query.content}); break;
         case "happiness" : data[req.query.team].push({type: 'happiness', content: req.query.content}); break;
     }
+
+    res.send('added');
 });
 
 app.get('/getAll', (req, res) => {
@@ -38,11 +40,32 @@ app.get('/getAll', (req, res) => {
 });
 
 app.get('/addNewTeam', function(req, res){
-  teams.push({name: req.body.team});
+  if(teams[req.query.name] === undefined){
+    teams[req.query.name] = [];
+    res.send('team added');
+  }else{
+    res.send('team already exists');
+  }
 });
 
 app.get('/getTeams', function(req, res){
-  res.send(JSON.stringify(teams));
+  res.send(JSON.stringify(Object.keys(teams)));
+});
+
+app.get('/showAll', (req, res) => {
+  res.send(JSON.stringify(data));
+});
+
+app.get('/clearAll', (req, res) => {
+  data = {};
+  teams = {};
+  res.send('data cleaned');
+});
+
+app.get('/clearTeamData', (req, res) => {
+  delete data[req.query.name];
+  delete teams[req.query.name];
+  res.send('team cleared');
 });
 
 app.use(express.static(__dirname + '/dist'));

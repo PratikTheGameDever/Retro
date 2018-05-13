@@ -10,15 +10,14 @@ import { Router } from '@angular/router';
 })
 export class TeamSetupComponent implements OnInit {
 
-  teams: Array<Team> = [];
-  teamName: string = '';
-
+  teams: Array<string> = [];
+  teamName = '';
+  
   constructor(private _service: RetroService, private _router: Router) { }
 
   ngOnInit() {
     this._service.getTeams().subscribe(
       data => {
-        console.log(data);
         this.teams = data.json();
       }, error => console.log(error)
     );
@@ -26,7 +25,7 @@ export class TeamSetupComponent implements OnInit {
 
   setTeamName(val : string){
     if(val.trim().length > 1){
-      this._service.setTeamName(val.trim());
+      this._service.setTeamName(val.trim()).subscribe();
       this._router.navigate(['input']);
     }
   }

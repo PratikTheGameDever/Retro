@@ -7,10 +7,12 @@
       <input #team type="text" class="form-control" [(ngModel)]="teamName" name="teamName" 
       (blur)="setTeamName(team.value)" required />
     </div>
-    <div *ngIf="teamForm.form.invalid && teamForm.controls.teamName.dirty" 
+    <div *ngIf="teamForm.form.invalid && team.dirty" 
     class="col-6"
     style="color: brown; margin-top: 12px;">
-      &emsp; Hey, Teay Name is Requried.
+      &emsp; Hey, Team Name is Requried.
     </div>
   </div>
+  <br/>
+  <retro-team-list [teams]="teams"></retro-team-list>
 </form>
