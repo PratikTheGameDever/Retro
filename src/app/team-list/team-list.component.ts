@@ -15,6 +15,7 @@ export class TeamListComponent implements OnInit {
   constructor(private _service: RetroService, private _router: Router) { }
 
   ngOnInit() {
+    
   }
 
   setTeam(team: string){
