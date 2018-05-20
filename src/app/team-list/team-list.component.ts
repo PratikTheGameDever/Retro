@@ -11,11 +11,11 @@ import { Router } from '@angular/router';
 export class TeamListComponent implements OnInit {
 
   @Input() teams: Array<string> = [];
-
+  selectedTeam:string;
   constructor(private _service: RetroService, private _router: Router) { }
 
   ngOnInit() {
-    
+    this.selectedTeam = this._service.teamName;
   }
 
   setTeam(team: string){
