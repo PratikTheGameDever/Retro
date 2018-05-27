@@ -5,8 +5,10 @@ import { AllStickiesComponent } from './all-stickies/all-stickies.component';
 import {  AlwaysAuthGuard } from './authentication/alwaysauthguard';
 import { OnlyLoggedInUsersGuard } from './authentication/onlyloggedInusersguard';
 import { TeamSetupComponent } from './team-setup/team-setup.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
+    {path: 'login', component : LoginComponent, pathMatch: 'full'},
     {path: '', redirectTo: 'home', pathMatch: 'full'},
     {path: 'home' , component: TeamSetupComponent, pathMatch: 'full'},
     {path: 'input', component: RetroInputComponent, pathMatch: 'full'},

@@ -15,6 +15,7 @@ import { OnlyLoggedInUsersGuard } from './authentication/onlyloggedInusersguard'
 import { UserService } from './services/user.service';
 import { TeamListComponent } from './team-list/team-list.component';
 import { TeamSetupComponent } from './team-setup/team-setup.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TeamSetupComponent } from './team-setup/team-setup.component';
     AllStickiesComponent,
     RetroInputComponent,
     TeamListComponent,
-    TeamSetupComponent
+    TeamSetupComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
