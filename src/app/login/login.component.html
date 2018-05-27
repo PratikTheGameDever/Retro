@@ -1,21 +1,18 @@
-
-  <div class="row">
-      <div class="col-lg-4 col-md-4">
-          <span>User Name</span>
-          <input class="form-control" type="text" style="width: 80%;" name="user-name" 
-    [(ngModel)]='userName'>&nbsp;
-      </div>  
-  </div>  
-  <div class="row"> 
-      <div class="col-lg-4 col-md-4">
-        <span>Chooge your Role</span>
-        <select>
-            <option *ngFor="let uRole of userRoles" >{{uRole}}</option>
-         </select> 
-      </div>  
-  </div>
-  <div class="row"> 
-      <div class="col-lg-4 col-md-4">
-          <button (click)='addContent("bad")' class="btn btn-danger">submit</button>
-      </div>  
-  </div>
+<div class="row">
+    <div class="col-lg-4 col-md-4">
+        <span>User Name</span>
+        <input class="form-control" type="text" style="width: 80%;" name="user-name" [(ngModel)]='name'>&nbsp;
+    </div>
+</div>
+<div class="row">
+    &emsp;
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label *ngFor="let r of roles" class="btn btn-primary" 
+        [ngClass]="{'active' : role == r.code}">
+            <input type="radio" (click)="setRole(r.code)" name="roles"> {{ r.view }}
+        </label>
+        <div class="col-lg-4 col-md-4">
+            <button (click)="login()" class="btn btn-danger">Proceed...</button>
+        </div>
+    </div>
+</div>
