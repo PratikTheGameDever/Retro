@@ -8,12 +8,22 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   constructor() { }
-  userName: string;
-  userRoles: Array<string> = [];
+  name: string;
+  role: string;
+  roles: Array<object> = [
+    {code: 'sm' , view : "Scrum Master"}, 
+    {code: 'oth', view : "Non Scrum Master"}
+  ];
 
   ngOnInit() {
-    this.userRoles.push('Scrum Master');
-    this.userRoles.push('Scrumies');
+    
   }
 
+  login(){
+    console.log(this.name, this.role);
+  }
+
+  setRole(code: string){
+    this.role = code;
+  }
 }

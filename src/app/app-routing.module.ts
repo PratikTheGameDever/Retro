@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
     {path: 'login', component : LoginComponent, pathMatch: 'full'},
-    {path: '', redirectTo: 'home', pathMatch: 'full'},
+    {path: '', redirectTo: 'login', pathMatch: 'full'},
     {path: 'home' , component: TeamSetupComponent, pathMatch: 'full'},
     {path: 'input', component: RetroInputComponent, pathMatch: 'full'},
     {path: 'all', component: AllStickiesComponent, pathMatch: 'full' , canActivate: [OnlyLoggedInUsersGuard , AlwaysAuthGuard]},
